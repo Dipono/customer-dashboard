@@ -17,14 +17,14 @@ const CustomTooltip = ({ active, payload, label }) => {
     const data = payload[0].payload;
     return (
       <div style={{
-        background: 'white', padding: '12px 16px', borderRadius: '8px',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.15)', border: '1px solid #e2e8f0'
+        background: 'var(--bg-card)', color: 'var(--text-primary)', padding: '12px 16px', borderRadius: '8px',
+        boxShadow: 'var(--shadow-md)', border: '1px solid var(--border)'
       }}>
         <p style={{ fontWeight: 600, marginBottom: '6px' }}>{formatMonth(label)}</p>
         <p style={{ color: '#6366f1', fontSize: '14px', fontWeight: 600 }}>
           {formatCurrency(data.totalSpent)}
         </p>
-        <p style={{ color: '#64748b', fontSize: '12px' }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>
           {data.transactionCount} transactions
         </p>
       </div>
@@ -74,17 +74,17 @@ const SpendingTrends = ({ data }) => {
                 <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
             <XAxis
               dataKey="month"
               tickFormatter={formatMonth}
-              tick={{ fontSize: 12, fill: '#94a3b8' }}
+              tick={{ fontSize: 12, fill: 'var(--text-muted)' }}
               axisLine={false}
               tickLine={false}
             />
             <YAxis
               tickFormatter={(v) => `R${(v / 1000).toFixed(0)}k`}
-              tick={{ fontSize: 12, fill: '#94a3b8' }}
+              tick={{ fontSize: 12, fill: 'var(--text-muted)' }}
               axisLine={false}
               tickLine={false}
               width={50}
@@ -97,22 +97,22 @@ const SpendingTrends = ({ data }) => {
               strokeWidth={3}
               fill="url(#colorSpent)"
               dot={{ fill: '#6366f1', strokeWidth: 2, r: 4 }}
-              activeDot={{ r: 6, strokeWidth: 2, stroke: '#fff' }}
+              activeDot={{ r: 6, strokeWidth: 2, stroke: 'var(--bg-card)' }}
             />
           </AreaChart>
         ) : (
           <BarChart data={trends} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
             <XAxis
               dataKey="month"
               tickFormatter={formatMonth}
-              tick={{ fontSize: 12, fill: '#94a3b8' }}
+              tick={{ fontSize: 12, fill: 'var(--text-muted)' }}
               axisLine={false}
               tickLine={false}
             />
             <YAxis
               tickFormatter={(v) => `R${(v / 1000).toFixed(0)}k`}
-              tick={{ fontSize: 12, fill: '#94a3b8' }}
+              tick={{ fontSize: 12, fill: 'var(--text-muted)' }}
               axisLine={false}
               tickLine={false}
               width={50}

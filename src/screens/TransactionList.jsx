@@ -62,7 +62,7 @@ const TransactionList = ({ data, onParamsChange, params }) => {
           </p>
         </div>
         <div className="filter-group">
-          <Filter size={16} color="#64748b" />
+          <Filter size={16} color="var(--text-secondary)" />
           <select className="filter-select" value={categoryFilter} onChange={handleCategoryChange}>
             <option value="all">All Categories</option>
             <option value="Groceries">Groceries</option>
@@ -83,7 +83,7 @@ const TransactionList = ({ data, onParamsChange, params }) => {
 
       <div className="transaction-list">
         {transactions.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '40px', color: '#94a3b8' }}>
+          <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text-muted)' }}>
             No transactions found
           </div>
         ) : (

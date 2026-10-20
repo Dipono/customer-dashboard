@@ -21,12 +21,12 @@ const CustomTooltip = ({ active, payload }) => {
     const data = payload[0].payload;
     return (
       <div style={{
-        background: 'white', padding: '10px 14px', borderRadius: '8px',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.15)', border: '1px solid #e2e8f0'
+        background: 'var(--bg-card)', color: 'var(--text-primary)', padding: '10px 14px', borderRadius: '8px',
+        boxShadow: 'var(--shadow-md)', border: '1px solid var(--border)'
       }}>
         <p style={{ fontWeight: 600, marginBottom: '4px' }}>{data.name}</p>
-        <p style={{ color: '#64748b', fontSize: '13px' }}>{formatCurrency(data.amount)}</p>
-        <p style={{ color: '#94a3b8', fontSize: '12px' }}>{data.percentage}% of total</p>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>{formatCurrency(data.amount)}</p>
+        <p style={{ color: 'var(--text-muted)', fontSize: '12px' }}>{data.percentage}% of total</p>
       </div>
     );
   }
@@ -120,7 +120,7 @@ const CategoryBreakdown = ({
             </PieChart>
           </ResponsiveContainer>
           <div style={{ textAlign: 'center', marginTop: '-10px' }}>
-            <p style={{ fontSize: '13px', color: '#64748b' }}>Total</p>
+            <p style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>Total</p>
             <p style={{ fontSize: '24px', fontWeight: 700 }}>{formatCurrency(totalAmount)}</p>
           </div>
         </div>

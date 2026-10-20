@@ -5,9 +5,9 @@ const formatCurrency = (amount) =>
   `R ${amount.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 const statusConfig = {
-  on_track: { label: 'On Track', color: '#10b981', bg: '#ecfdf5', icon: CheckCircle },
-  warning: { label: 'Warning', color: '#f59e0b', bg: '#fffbeb', icon: AlertTriangle },
-  over_budget: { label: 'Over Budget', color: '#ef4444', bg: '#fef2f2', icon: AlertTriangle }
+  on_track: { label: 'On Track', color: '#10b981', bg: 'var(--success-bg)', icon: CheckCircle },
+  warning: { label: 'Warning', color: '#f59e0b', bg: 'var(--warning-bg)', icon: AlertTriangle },
+  over_budget: { label: 'Over Budget', color: '#ef4444', bg: 'var(--danger-bg)', icon: AlertTriangle }
 };
 
 const SpendingGoals = ({ data }) => {
@@ -22,7 +22,7 @@ const SpendingGoals = ({ data }) => {
           <h3 className="card-title">Spending Goals</h3>
           <p className="card-subtitle">Monthly budget tracking</p>
         </div>
-        <Target size={20} color="#6366f1" />
+        <Target size={20} color="var(--primary)" />
       </div>
       <div>
         {goals.map((goal) => {

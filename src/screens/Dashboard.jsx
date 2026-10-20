@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { Moon, Sun } from 'lucide-react';
 import { api } from '../services/api';
 import { useFetch } from '../hooks/useFetch';
 import CustomerProfile from './CustomerProfile';
@@ -13,6 +14,9 @@ import LoadingSpinner from './LoadingSpinner';
 const CUSTOMER_ID = '12345';
 
 const Dashboard = () => {
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem('dashboard-theme') === 'dark' ? 'dark' : 'light'
+  );
   const [period, setPeriod] = useState('30d');
   const [categoryDateDraft, setCategoryDateDraft] = useState({ startDate: '', endDate: '' });
   const [categoryDateRange, setCategoryDateRange] = useState(null);
@@ -66,6 +70,13 @@ const Dashboard = () => {
 
   const { data: goals, loading: goalsLoading } = useFetch(fetchGoals);
 
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('dashboard-theme', theme);
+    document.querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme === 'dark' ? '#0f172a' : '#f8fafc');
+  }, [theme]);
+
   const handleParamsChange = useCallback((newParams) => {
     setTransactionParams(newParams);
   }, []);
@@ -103,6 +114,16 @@ const Dashboard = () => {
             Customer <span>Spending Insights</span>
           </h1>
         </div>
+        <button
+          className="theme-toggle"
+          type="button"
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          aria-pressed={theme === 'dark'}
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        >
+          {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
+          <span>{theme === 'light' ? 'Dark mode' : 'Light mode'}</span>
+        </button>
       </div>
 
       {/* Customer Profile */}
@@ -179,7 +200,7 @@ const Dashboard = () => {
       <div style={{
         textAlign: 'center',
         padding: '40px 0 20px',
-        color: '#94a3b8',
+        color: 'var(--text-muted)',
         fontSize: '13px'
       }}>
       </div>

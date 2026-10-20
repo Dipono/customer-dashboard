@@ -8,7 +8,7 @@ const FilterBar = ({ filters, activePeriod, onPeriodChange }) => {
 
   return (
     <div className="filter-bar">
-      <Calendar size={18} color="#64748b" />
+      <Calendar size={18} color="var(--text-secondary)" />
       <span className="filter-label">Period:</span>
       <div className="filter-group">
         {dateRangePresets.map((preset) => (

@@ -14,8 +14,8 @@ const StatCard = ({ label, value, change, changeLabel, icon: Icon }) => (
       {Icon && (
         <div style={{
           width: '40px', height: '40px', borderRadius: '10px',
-          background: '#eef2ff', display: 'flex', alignItems: 'center',
-          justifyContent: 'center', color: '#6366f1', flexShrink: 0
+          background: 'var(--bg-hover)', display: 'flex', alignItems: 'center',
+          justifyContent: 'center', color: 'var(--primary)', flexShrink: 0
         }}>
           <Icon size={20} />
         </div>
