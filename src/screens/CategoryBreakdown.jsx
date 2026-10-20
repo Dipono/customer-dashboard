@@ -13,6 +13,15 @@ const iconMap = {
   'zap': Zap
 };
 
+const categoryColors = [
+  '--chart-1',
+  '--chart-2',
+  '--chart-3',
+  '--chart-4',
+  '--chart-5',
+  '--chart-6'
+];
+
 const formatCurrency = (amount) =>
   `R ${amount.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
@@ -113,7 +122,7 @@ const CategoryBreakdown = ({
                 strokeWidth={0}
               >
                 {categories.map((entry, index) => (
-                  <Cell key={index} fill={entry.color} />
+                  <Cell key={entry.name} fill={`var(${categoryColors[index % categoryColors.length]})`} />
                 ))}
               </Pie>
               <Tooltip content={<CustomTooltip />} />
@@ -132,13 +141,13 @@ const CategoryBreakdown = ({
           <h3 className="card-title">Category Details</h3>
         </div>
         <div className="category-list">
-          {categories.map((cat) => {
+          {categories.map((cat, index) => {
             const IconComponent = iconMap[cat.icon] || ShoppingCart;
             return (
               <div className="category-item" key={cat.name}>
                 <div
                   className="category-icon-wrapper"
-                  style={{ background: `${cat.color}20`, color: cat.color }}
+                  style={{ background: 'var(--bg-hover)', color: 'var(--text-primary)' }}
                 >
                   <IconComponent size={20} />
                 </div>
@@ -154,7 +163,10 @@ const CategoryBreakdown = ({
                   <div className="progress-bar">
                     <div
                       className="progress-fill"
-                      style={{ width: `${cat.percentage}%`, background: cat.color }}
+                      style={{
+                        width: `${cat.percentage}%`,
+                        background: `var(${categoryColors[index % categoryColors.length]})`
+                      }}
                     />
                   </div>
                 </div>

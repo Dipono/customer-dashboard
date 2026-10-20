@@ -21,7 +21,7 @@ const CustomTooltip = ({ active, payload, label }) => {
         boxShadow: 'var(--shadow-md)', border: '1px solid var(--border)'
       }}>
         <p style={{ fontWeight: 600, marginBottom: '6px' }}>{formatMonth(label)}</p>
-        <p style={{ color: '#6366f1', fontSize: '14px', fontWeight: 600 }}>
+        <p style={{ color: 'var(--primary)', fontSize: '14px', fontWeight: 600 }}>
           {formatCurrency(data.totalSpent)}
         </p>
         <p style={{ color: 'var(--text-secondary)', fontSize: '12px' }}>
@@ -70,8 +70,8 @@ const SpendingTrends = ({ data }) => {
           <AreaChart data={trends} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="colorSpent" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+                <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="var(--primary)" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
@@ -93,10 +93,10 @@ const SpendingTrends = ({ data }) => {
             <Area
               type="monotone"
               dataKey="totalSpent"
-              stroke="#6366f1"
+              stroke="var(--primary)"
               strokeWidth={3}
               fill="url(#colorSpent)"
-              dot={{ fill: '#6366f1', strokeWidth: 2, r: 4 }}
+              dot={{ fill: 'var(--primary)', strokeWidth: 2, r: 4 }}
               activeDot={{ r: 6, strokeWidth: 2, stroke: 'var(--bg-card)' }}
             />
           </AreaChart>
@@ -118,7 +118,7 @@ const SpendingTrends = ({ data }) => {
               width={50}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Bar dataKey="totalSpent" fill="#6366f1" radius={[6, 6, 0, 0]} maxBarSize={48} />
+            <Bar dataKey="totalSpent" fill="var(--primary)" radius={[6, 6, 0, 0]} maxBarSize={48} />
           </BarChart>
         )}
       </ResponsiveContainer>

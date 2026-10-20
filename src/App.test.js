@@ -11,7 +11,7 @@ beforeEach(() => {
     themeColor.name = 'theme-color';
     document.head.appendChild(themeColor);
   }
-  themeColor.setAttribute('content', '#f8fafc');
+  themeColor.setAttribute('content', '#0b0b0c');
 });
 
 test('renders the customer spending dashboard', async () => {
@@ -22,24 +22,35 @@ test('renders the customer spending dashboard', async () => {
   expect(heading).toBeInTheDocument();
 });
 
-test('switches between light and dark dashboard themes', async () => {
+test('starts in dark mode and switches between monochrome themes', async () => {
   render(<App />);
 
-  const darkModeButton = await screen.findByRole('button', { name: /switch to dark mode/i });
-  expect(document.documentElement).toHaveAttribute('data-theme', 'light');
-  expect(document.querySelector('meta[name="theme-color"]')).toHaveAttribute('content', '#f8fafc');
-
-  fireEvent.click(darkModeButton);
+  const lightModeButton = await screen.findByRole('button', { name: /switch to light mode/i });
   await waitFor(() => {
     expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
-    expect(document.querySelector('meta[name="theme-color"]')).toHaveAttribute('content', '#0f172a');
+    expect(document.querySelector('meta[name="theme-color"]')).toHaveAttribute('content', '#0b0b0c');
   });
   expect(localStorage.getItem('dashboard-theme')).toBe('dark');
 
-  fireEvent.click(screen.getByRole('button', { name: /switch to light mode/i }));
+  fireEvent.click(lightModeButton);
   await waitFor(() => {
     expect(document.documentElement).toHaveAttribute('data-theme', 'light');
+    expect(document.querySelector('meta[name="theme-color"]')).toHaveAttribute('content', '#f4f4f5');
   });
+  expect(localStorage.getItem('dashboard-theme')).toBe('light');
+
+  fireEvent.click(screen.getByRole('button', { name: /switch to dark mode/i }));
+  await waitFor(() => {
+    expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
+  });
+});
+
+test('restores a saved light-mode preference', async () => {
+  localStorage.setItem('dashboard-theme', 'light');
+  render(<App />);
+
+  await screen.findByRole('button', { name: /switch to dark mode/i });
+  expect(document.documentElement).toHaveAttribute('data-theme', 'light');
 });
 
 test('returns category totals for an inclusive custom date range', async () => {

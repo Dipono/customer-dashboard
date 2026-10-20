@@ -5,9 +5,9 @@ const formatCurrency = (amount) =>
   `R ${amount.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 const statusConfig = {
-  on_track: { label: 'On Track', color: '#10b981', bg: 'var(--success-bg)', icon: CheckCircle },
-  warning: { label: 'Warning', color: '#f59e0b', bg: 'var(--warning-bg)', icon: AlertTriangle },
-  over_budget: { label: 'Over Budget', color: '#ef4444', bg: 'var(--danger-bg)', icon: AlertTriangle }
+  on_track: { label: 'On Track', color: 'var(--text-secondary)', bg: 'var(--neutral-bg)', icon: CheckCircle },
+  warning: { label: 'Warning', color: 'var(--text-primary)', bg: 'var(--neutral-bg)', icon: AlertTriangle },
+  over_budget: { label: 'Over Budget', color: 'var(--text-primary)', bg: 'var(--neutral-bg)', icon: AlertTriangle }
 };
 
 const SpendingGoals = ({ data }) => {
@@ -28,8 +28,7 @@ const SpendingGoals = ({ data }) => {
         {goals.map((goal) => {
           const config = statusConfig[goal.status] || statusConfig.on_track;
           const StatusIcon = config.icon;
-          const progressColor = goal.percentageUsed >= 90 ? '#ef4444' :
-            goal.percentageUsed >= 75 ? '#f59e0b' : '#10b981';
+          const progressColor = 'var(--primary)';
 
           return (
             <div className="goal-item" key={goal.id}>

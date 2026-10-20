@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useLayoutEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { api } from '../services/api';
 import { useFetch } from '../hooks/useFetch';
@@ -15,7 +15,7 @@ const CUSTOMER_ID = '12345';
 
 const Dashboard = () => {
   const [theme, setTheme] = useState(
-    () => localStorage.getItem('dashboard-theme') === 'dark' ? 'dark' : 'light'
+    () => localStorage.getItem('dashboard-theme') === 'light' ? 'light' : 'dark'
   );
   const [period, setPeriod] = useState('30d');
   const [categoryDateDraft, setCategoryDateDraft] = useState({ startDate: '', endDate: '' });
@@ -70,11 +70,11 @@ const Dashboard = () => {
 
   const { data: goals, loading: goalsLoading } = useFetch(fetchGoals);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('dashboard-theme', theme);
     document.querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', theme === 'dark' ? '#0f172a' : '#f8fafc');
+      ?.setAttribute('content', theme === 'dark' ? '#0b0b0c' : '#f4f4f5');
   }, [theme]);
 
   const handleParamsChange = useCallback((newParams) => {
@@ -109,7 +109,7 @@ const Dashboard = () => {
       {/* Header */}
       <div className="dashboard-header">
         <div className="dashboard-brand">
-          <img className="dashboard-logo" src="/logo.jpg" alt="Capitec" />
+          <img className="dashboard-logo" src="/capitec-logo.png" alt="Capitec" />
           <h1 className="dashboard-title">
             Customer <span>Spending Insights</span>
           </h1>

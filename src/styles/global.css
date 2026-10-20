@@ -3,25 +3,37 @@
 
 :root {
   color-scheme: light;
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --primary-light: #818cf8;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --bg-primary: #f8fafc;
+  --primary: #27272a;
+  --primary-dark: #18181b;
+  --primary-light: #71717a;
+  --active-text: #ffffff;
+  --success: #52525b;
+  --warning: #71717a;
+  --danger: #27272a;
+  --bg-primary: #f4f4f5;
   --bg-secondary: #ffffff;
   --bg-card: #ffffff;
-  --bg-hover: #eef2ff;
-  --bg-progress: #f1f5f9;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
-  --border: #e2e8f0;
-  --success-bg: #ecfdf5;
-  --warning-bg: #fffbeb;
-  --danger-bg: #fef2f2;
-  --neutral-bg: #f1f5f9;
+  --bg-hover: #f4f4f5;
+  --bg-progress: #e4e4e7;
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #71717a;
+  --border: #e4e4e7;
+  --success-bg: #f4f4f5;
+  --warning-bg: #e4e4e7;
+  --danger-bg: #f4f4f5;
+  --neutral-bg: #f4f4f5;
+  --tag-bg: #27272a;
+  --tag-text: #ffffff;
+  --logo-invert: 0;
+  --profile-start: #27272a;
+  --profile-end: #18181b;
+  --chart-1: #18181b;
+  --chart-2: #404040;
+  --chart-3: #52525b;
+  --chart-4: #737373;
+  --chart-5: #a3a3a3;
+  --chart-6: #d4d4d8;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -32,19 +44,37 @@
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg-primary: #0f172a;
-  --bg-secondary: #111c31;
-  --bg-card: #1e293b;
-  --bg-hover: #293755;
-  --bg-progress: #334155;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --border: #334155;
-  --success-bg: #12372f;
-  --warning-bg: #3d321b;
-  --danger-bg: #42252b;
-  --neutral-bg: #293548;
+  --primary: #f4f4f5;
+  --primary-dark: #d4d4d8;
+  --primary-light: #ffffff;
+  --active-text: #18181b;
+  --success: #d4d4d8;
+  --warning: #a1a1aa;
+  --danger: #f4f4f5;
+  --bg-primary: #0b0b0c;
+  --bg-secondary: #121214;
+  --bg-card: #171719;
+  --bg-hover: #29292d;
+  --bg-progress: #343437;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --border: #2d2d31;
+  --success-bg: #29292d;
+  --warning-bg: #343437;
+  --danger-bg: #29292d;
+  --neutral-bg: #29292d;
+  --tag-bg: #343437;
+  --tag-text: #f4f4f5;
+  --logo-invert: 1;
+  --profile-start: #27272a;
+  --profile-end: #18181b;
+  --chart-1: #f4f4f5;
+  --chart-2: #d4d4d8;
+  --chart-3: #a1a1aa;
+  --chart-4: #71717a;
+  --chart-5: #52525b;
+  --chart-6: #e4e4e7;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.24);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.32);
   --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.36);
@@ -101,12 +131,11 @@ body {
 }
 
 .dashboard-logo {
-  width: 150px;
-  height: 70px;
-  object-fit: cover;
-  mix-blend-mode: multiply;
-  background: #fff;
-  border-radius: var(--radius-sm);
+  display: block;
+  width: 132px;
+  height: auto;
+  object-fit: contain;
+  filter: invert(var(--logo-invert));
   flex-shrink: 0;
 }
 
@@ -262,7 +291,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, var(--profile-start) 0%, var(--profile-end) 100%);
   color: white;
   border-radius: var(--radius-lg);
   padding: 28px;
@@ -354,7 +383,7 @@ body {
 
 .filter-btn.active {
   background: var(--primary);
-  color: white;
+  color: var(--active-text);
   border-color: var(--primary);
 }
 
@@ -372,7 +401,7 @@ body {
 
 .filter-select:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 14%, transparent);
 }
 
 .category-date-form {
@@ -407,7 +436,7 @@ body {
 
 .category-date-form button {
   padding: 0 10px;
-  color: white;
+  color: var(--active-text);
   background: var(--primary);
   cursor: pointer;
 }
@@ -523,6 +552,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--bg-hover);
+  color: var(--text-primary);
   flex-shrink: 0;
 }
 
@@ -555,7 +586,8 @@ body {
   border-radius: 10px;
   font-size: 11px;
   font-weight: 500;
-  color: white;
+  color: var(--tag-text);
+  background: var(--tag-bg);
 }
 
 .transaction-amount {
@@ -724,7 +756,7 @@ body {
 .retry-btn {
   padding: 10px 20px;
   background: var(--primary);
-  color: white;
+  color: var(--active-text);
   border: none;
   border-radius: var(--radius-sm);
   font-size: 14px;
@@ -752,7 +784,7 @@ body {
   .grid-2 { grid-template-columns: 1fr; }
   .dashboard-title { font-size: 22px; }
   .dashboard-brand { gap: 12px; }
-  .dashboard-logo { width: 96px; height: 45px; }
+  .dashboard-logo { width: 104px; }
   .theme-toggle { min-height: 38px; }
   .profile-card { flex-direction: column; text-align: center; }
   .stat-value { font-size: 22px; }
@@ -765,7 +797,7 @@ body {
   .dashboard-header { align-items: flex-start; }
   .dashboard-brand { flex: 1 1 100%; }
   .dashboard-title { font-size: 19px; line-height: 1.25; }
-  .dashboard-logo { width: 80px; height: 40px; }
+  .dashboard-logo { width: 88px; }
   .theme-toggle { min-height: 36px; padding: 6px 12px; }
   .transaction-item { gap: 10px; }
   .transaction-icon { width: 36px; height: 36px; }

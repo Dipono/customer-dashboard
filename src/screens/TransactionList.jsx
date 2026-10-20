@@ -93,7 +93,6 @@ const TransactionList = ({ data, onParamsChange, params }) => {
               <div className="transaction-item" key={txn.id}>
                 <div
                   className="transaction-icon"
-                  style={{ background: `${txn.categoryColor}20`, color: txn.categoryColor }}
                 >
                   <IconComponent size={20} />
                 </div>
@@ -109,7 +108,6 @@ const TransactionList = ({ data, onParamsChange, params }) => {
                   <span className="transaction-amount">{formatCurrency(txn.amount)}</span>
                   <span
                     className="transaction-category-tag"
-                    style={{ background: txn.categoryColor }}
                   >
                     {txn.category}
                   </span>
