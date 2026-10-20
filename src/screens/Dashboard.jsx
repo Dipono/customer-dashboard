@@ -97,13 +97,11 @@ const Dashboard = () => {
     <div className="dashboard">
       {/* Header */}
       <div className="dashboard-header">
-        <div>
+        <div className="dashboard-brand">
+          <img className="dashboard-logo" src="/logo.jpg" alt="Capitec" />
           <h1 className="dashboard-title">
             Customer <span>Spending Insights</span>
           </h1>
-          <p className="dashboard-subtitle">
-            Financial analytics dashboard • Mock data
-          </p>
         </div>
       </div>
 
